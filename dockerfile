@@ -11,4 +11,4 @@ COPY build/libs/*.jar app.jar
 EXPOSE 8100
 
 # Step 5: Define the command to run your Spring Boot application
-CMD ["java", "-jar", "app.jar"]
+CMD ["java", "-jar", "/app/app.jar"]
