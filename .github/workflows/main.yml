@@ -48,7 +48,7 @@ jobs:
           docker build -t sat-story-element:latest -f dockerfile .
 
       - name: Save as TAR Archive
-        run: docker save sat-story-element:latest -0 sat-story-element.tar
+        run: docker save sat-story-element:latest -o sat-story-element.tar
 
       - name: Upload Docker Artifact
         uses: actions/upload-artifact@v4
