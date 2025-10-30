@@ -5,10 +5,10 @@ FROM openjdk:17-jdk-alpine
 WORKDIR /app
 
 # Step 3: Copy the Spring Boot JAR file into the container
-COPY build/libs/*.jar /app/app.jar
+COPY build/libs/*.jar app.jar
 
 # Step 4: Expose the port your application runs on
 EXPOSE 8100
 
 # Step 5: Define the command to run your Spring Boot application
-CMD ["java", "-jar", "/app/app.jar"]
+CMD ["java", "-jar", "app.jar"]
