@@ -53,7 +53,7 @@ jobs:
       - name: Upload Docker Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: sat-story-element-docker.tar
+          name: sat-story-element-docker
           path: |
             dockerfile
             sat-story-element.tar
