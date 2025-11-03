@@ -1,7 +1,7 @@
 package com.cmoncrieffe.satstoryelement.controller.utils;
 
-import com.cmoncrieffe.satstoryelement.dice.DieRoller;
-import com.cmoncrieffe.satstoryelement.dice.DieSize;
+import com.cmoncrieffe.dice.DiceRoller;
+import com.cmoncrieffe.dice.DiceSize;
 import com.cmoncrieffe.satstoryelement.event.ElementType;
 import com.cmoncrieffe.satstoryelement.repositories.VerbRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +26,7 @@ public class VerbRepo {
     }
 
     private static int getValue1() {
-        int value = DieRoller.roll1Based(DieSize.D10);
+        int value = DiceRoller.INSTANCE.roll1Based(DiceSize.D10);
         if (value < 3)
             return 0;
         else if (value < 5)
@@ -40,6 +40,6 @@ public class VerbRepo {
     }
 
     private static int getValue2() {
-        return DieRoller.roll0Based(DieSize.D100);
+        return DiceRoller.INSTANCE.roll0Based(DiceSize.D100);
     }
 }

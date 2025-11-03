@@ -1,11 +1,11 @@
 package com.cmoncrieffe.satstoryelement.controller;
 
+import com.cmoncrieffe.dice.DiceRoller;
+import com.cmoncrieffe.dice.DiceSize;
 import com.cmoncrieffe.satstoryelement.controller.utils.CreatureRepo;
 import com.cmoncrieffe.satstoryelement.controller.utils.PersonRepo;
 import com.cmoncrieffe.satstoryelement.controller.utils.UrbanEventRepo;
 import com.cmoncrieffe.satstoryelement.controller.utils.VerbRepo;
-import com.cmoncrieffe.satstoryelement.dice.DieRoller;
-import com.cmoncrieffe.satstoryelement.dice.DieSize;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,7 +18,8 @@ public class ElementGeneratorController {
 
     @GetMapping("/{amount}")
     public ResponseEntity<List<String[]>> generate(@PathVariable("amount") int amount) {
-        return ResponseEntity.ok(DieRoller.roll1Based(DieSize.D20, amount)
+
+        return ResponseEntity.ok(DiceRoller.INSTANCE.roll0Based(DiceSize.D20, amount)
                 .stream()
                 .map(integer -> {
                     if (integer <= 6)

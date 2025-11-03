@@ -1,7 +1,7 @@
 package com.cmoncrieffe.satstoryelement.controller.utils;
 
-import com.cmoncrieffe.satstoryelement.dice.DieRoller;
-import com.cmoncrieffe.satstoryelement.dice.DieSize;
+import com.cmoncrieffe.dice.DiceRoller;
+import com.cmoncrieffe.dice.DiceSize;
 import com.cmoncrieffe.satstoryelement.event.ElementType;
 import com.cmoncrieffe.satstoryelement.repositories.UrbanEventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ public class UrbanEventRepo {
         return new String[] {
                 ElementType.EVENT.toString(),
                 urbanEventRepository
-                        .getUrbanEventById(DieRoller.roll1Based(DieSize.D100))
+                        .getUrbanEventById(DiceRoller.INSTANCE.roll1Based(DiceSize.D100))
                         .getEventText()
         };
     }

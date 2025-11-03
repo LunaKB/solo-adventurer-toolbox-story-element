@@ -1,7 +1,7 @@
 package com.cmoncrieffe.satstoryelement.controller.utils;
 
-import com.cmoncrieffe.satstoryelement.dice.DieRoller;
-import com.cmoncrieffe.satstoryelement.dice.DieSize;
+import com.cmoncrieffe.dice.DiceRoller;
+import com.cmoncrieffe.dice.DiceSize;
 import com.cmoncrieffe.satstoryelement.entity.person.Profession;
 import com.cmoncrieffe.satstoryelement.entity.person.Race;
 import com.cmoncrieffe.satstoryelement.event.ElementType;
@@ -73,7 +73,7 @@ public class PersonRepo {
     }
 
     private static String getRace() {
-        Race race = raceRepository.getRaceById(DieRoller.roll1Based(DieSize.D100));
+        Race race = raceRepository.getRaceById(DiceRoller.INSTANCE.roll1Based(DiceSize.D100));
         if (Objects.equals(race.getText(), "Other"))
             return getUncommonRace();
         else
@@ -82,24 +82,24 @@ public class PersonRepo {
 
     private static String getUncommonRace() {
         return uncommonRaceRepository
-                .getUncommonRacesById(DieRoller.roll1Based(DieSize.D20))
+                .getUncommonRacesById(DiceRoller.INSTANCE.roll1Based(DiceSize.D20))
                 .getText();
     }
 
     private static String getGender() {
         return genderRepository
-                .getGenderById(DieRoller.roll1Based(DieSize.D100))
+                .getGenderById(DiceRoller.INSTANCE.roll1Based(DiceSize.D100))
                 .getText();
     }
 
     private static String getAlignment() {
         return alignmentRepository
-                .getAlignmentById(DieRoller.roll1Based(DieSize.D100))
+                .getAlignmentById(DiceRoller.INSTANCE.roll1Based(DiceSize.D100))
                 .getText();
     }
 
     private static String getProfession() {
-        Profession profession = professionRepository.getProfessionById(DieRoller.roll1Based(DieSize.D100));
+        Profession profession = professionRepository.getProfessionById(DiceRoller.INSTANCE.roll1Based(DiceSize.D100));
         if (Objects.equals(profession.getText(), "Tradesperson"))
             return getTradesperson();
         else if (Objects.equals(profession.getText(), "Adventurer"))
@@ -110,7 +110,7 @@ public class PersonRepo {
 
     private static String getTradesperson() {
         return tradesRepository
-                .getTradesById(DieRoller.roll1Based(DieSize.D100))
+                .getTradesById(DiceRoller.INSTANCE.roll1Based(DiceSize.D100))
                 .getTradeText();
     }
 
@@ -123,13 +123,13 @@ public class PersonRepo {
 
     private static String getAdventurerClass() {
         return classesRepository
-                .getClassesById(DieRoller.roll1Based(DieSize.D100)).
+                .getClassesById(DiceRoller.INSTANCE.roll1Based(DiceSize.D12)).
                 getClassText();
     }
 
     private static String getAdventurerLevel() {
-        int rollLevel = DieRoller.roll1Based(DieSize.D20);
-        return switch (adventurerTierRepository.getAdventurerTierById(DieRoller.roll1Based(DieSize.D20)).getText()) {
+        int rollLevel = DiceRoller.INSTANCE.roll1Based(DiceSize.D20);
+        return switch (adventurerTierRepository.getAdventurerTierById(DiceRoller.INSTANCE.roll1Based(DiceSize.D20)).getText()) {
             case "Early" -> adventurerLevelEarlyRepository.getAdventurerLevelEarlyById(rollLevel).getText();
             case "Mid" -> adventurerLevelMidRepository.getAdventurerLevelMidById(rollLevel).getText();
             case "Late" -> adventurerLevelLateRepository.getAdventurerLevelLateById(rollLevel).getText();
@@ -139,13 +139,13 @@ public class PersonRepo {
 
     private static String getDisposition() {
         return dispositionsRepository
-                .getDispositionsById(DieRoller.roll1Based(DieSize.D100))
+                .getDispositionsById(DiceRoller.INSTANCE.roll1Based(DiceSize.D100))
                 .getDispositionText();
     }
 
     private static String getEconomicStatus() {
         return economicStatusRepository
-                .getEconomicStatusById(DieRoller.roll1Based(DieSize.D100))
+                .getEconomicStatusById(DiceRoller.INSTANCE.roll1Based(DiceSize.D100))
                 .getText();
     }
 }

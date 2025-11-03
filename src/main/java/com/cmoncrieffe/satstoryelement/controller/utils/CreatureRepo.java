@@ -1,7 +1,7 @@
 package com.cmoncrieffe.satstoryelement.controller.utils;
 
-import com.cmoncrieffe.satstoryelement.dice.DieRoller;
-import com.cmoncrieffe.satstoryelement.dice.DieSize;
+import com.cmoncrieffe.dice.DiceRoller;
+import com.cmoncrieffe.dice.DiceSize;
 import com.cmoncrieffe.satstoryelement.event.ElementType;
 import com.cmoncrieffe.satstoryelement.repositories.CreatureRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ public class CreatureRepo {
     }
 
     public static String[] get() {
-        int roll = DieRoller.roll1Based(DieSize.D20, 2)
+        int roll = DiceRoller.INSTANCE.roll1Based(DiceSize.D20, 2)
                 .stream()
                 .mapToInt(Integer::intValue)
                 .sum();
