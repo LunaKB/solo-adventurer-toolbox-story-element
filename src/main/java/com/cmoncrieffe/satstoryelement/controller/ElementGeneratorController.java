@@ -1,11 +1,11 @@
 package com.cmoncrieffe.satstoryelement.controller;
 
-import com.cmoncrieffe.satstoryelement.dice.DieRoller;
-import com.cmoncrieffe.satstoryelement.dice.DieSize;
-import com.cmoncrieffe.satstoryelement.event.Creature;
-import com.cmoncrieffe.satstoryelement.event.Person;
-import com.cmoncrieffe.satstoryelement.event.UrbanEvent;
-import com.cmoncrieffe.satstoryelement.event.Verb;
+import com.cmoncrieffe.dice.DiceRoller;
+import com.cmoncrieffe.dice.DiceSize;
+import com.cmoncrieffe.satstoryelement.controller.utils.CreatureRepo;
+import com.cmoncrieffe.satstoryelement.controller.utils.PersonRepo;
+import com.cmoncrieffe.satstoryelement.controller.utils.UrbanEventRepo;
+import com.cmoncrieffe.satstoryelement.controller.utils.VerbRepo;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,25 +15,21 @@ import java.util.List;
 @RestController
 @RequestMapping("/story-element/generate")
 public class ElementGeneratorController {
-    // TODO: Put all strings in a database.
-    private final UrbanEvent urbanEvent = new UrbanEvent();
-    private final Creature creature = new Creature();
-    private final Verb verb = new Verb();
-    private final Person person = new Person();
 
     @GetMapping("/{amount}")
     public ResponseEntity<List<String[]>> generate(@PathVariable("amount") int amount) {
-        return ResponseEntity.ok(DieRoller.roll1Based(DieSize.D20, amount)
+
+        return ResponseEntity.ok(DiceRoller.INSTANCE.roll0Based(DiceSize.D20, amount)
                 .stream()
                 .map(integer -> {
                     if (integer <= 6)
-                        return urbanEvent.getEvent();
+                        return UrbanEventRepo.get();
                     else if (integer <= 8)
-                        return creature.getCreature();
+                        return CreatureRepo.get();
                     else if (integer <= 12)
-                        return person.getPerson();
+                        return PersonRepo.getPerson();
                     else
-                        return verb.getVerb();
+                        return VerbRepo.get();
                 }).toList());
     }
 }
