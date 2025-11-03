@@ -8,7 +8,7 @@ WORKDIR /app
 COPY build/libs/*.jar app.jar
 
 # Step 4: Expose the port your application runs on
-EXPOSE 8100 8200
+EXPOSE 8100
 
 # Step 5: Define the command to run your Spring Boot application
 CMD ["java", "-jar", "/app/app.jar"]
