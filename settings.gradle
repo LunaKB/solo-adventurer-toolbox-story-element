@@ -1,4 +1,1 @@
 rootProject.name = 'solo-adventurer-toolbox-story-element'
-
-include ':dice-roller'
-project(':dice-roller').projectDir = new File('../dice-roller')

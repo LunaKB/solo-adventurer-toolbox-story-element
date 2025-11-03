@@ -32,7 +32,7 @@ dependencies {
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     annotationProcessor 'org.projectlombok:lombok:1.18.42'
 
-    implementation project(':dice-roller')
+    implementation fileTree(dir: 'lib', include: ['*.jar'])
 }
 
 tasks.named('test') {
