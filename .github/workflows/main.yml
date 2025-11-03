@@ -18,7 +18,7 @@ jobs:
       - name: Download JAR from dice-roller
         env:
           GH_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-        run:
+        run: |
           mkdir -p lib
           latest_run_id=$(gh run list -R LunaKB/dice-roller --workflow=main.yml --limit 1 --json databaseId --jq '.[0].databaseId')
           gh run download $latest_run_id -R LunaKB/dice-roller --name dice-roller.jar --dir lib
