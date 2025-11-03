@@ -73,7 +73,7 @@ public class PersonRepo {
     }
 
     private static String getRace() {
-        Race race = raceRepository.getRaceById(DiceRoller.INSTANCE.roll1Based(DiceSize.D100));
+        Race race = raceRepository.getRaceById(DiceRoller.roll1Based(DiceSize.D100));
         if (Objects.equals(race.getText(), "Other"))
             return getUncommonRace();
         else
@@ -82,24 +82,24 @@ public class PersonRepo {
 
     private static String getUncommonRace() {
         return uncommonRaceRepository
-                .getUncommonRacesById(DiceRoller.INSTANCE.roll1Based(DiceSize.D20))
+                .getUncommonRacesById(DiceRoller.roll1Based(DiceSize.D20))
                 .getText();
     }
 
     private static String getGender() {
         return genderRepository
-                .getGenderById(DiceRoller.INSTANCE.roll1Based(DiceSize.D100))
+                .getGenderById(DiceRoller.roll1Based(DiceSize.D100))
                 .getText();
     }
 
     private static String getAlignment() {
         return alignmentRepository
-                .getAlignmentById(DiceRoller.INSTANCE.roll1Based(DiceSize.D100))
+                .getAlignmentById(DiceRoller.roll1Based(DiceSize.D100))
                 .getText();
     }
 
     private static String getProfession() {
-        Profession profession = professionRepository.getProfessionById(DiceRoller.INSTANCE.roll1Based(DiceSize.D100));
+        Profession profession = professionRepository.getProfessionById(DiceRoller.roll1Based(DiceSize.D100));
         if (Objects.equals(profession.getText(), "Tradesperson"))
             return getTradesperson();
         else if (Objects.equals(profession.getText(), "Adventurer"))
@@ -110,7 +110,7 @@ public class PersonRepo {
 
     private static String getTradesperson() {
         return tradesRepository
-                .getTradesById(DiceRoller.INSTANCE.roll1Based(DiceSize.D100))
+                .getTradesById(DiceRoller.roll1Based(DiceSize.D100))
                 .getTradeText();
     }
 
@@ -123,13 +123,13 @@ public class PersonRepo {
 
     private static String getAdventurerClass() {
         return classesRepository
-                .getClassesById(DiceRoller.INSTANCE.roll1Based(DiceSize.D12)).
+                .getClassesById(DiceRoller.roll1Based(DiceSize.D12)).
                 getClassText();
     }
 
     private static String getAdventurerLevel() {
-        int rollLevel = DiceRoller.INSTANCE.roll1Based(DiceSize.D20);
-        return switch (adventurerTierRepository.getAdventurerTierById(DiceRoller.INSTANCE.roll1Based(DiceSize.D20)).getText()) {
+        int rollLevel = DiceRoller.roll1Based(DiceSize.D20);
+        return switch (adventurerTierRepository.getAdventurerTierById(DiceRoller.roll1Based(DiceSize.D20)).getText()) {
             case "Early" -> adventurerLevelEarlyRepository.getAdventurerLevelEarlyById(rollLevel).getText();
             case "Mid" -> adventurerLevelMidRepository.getAdventurerLevelMidById(rollLevel).getText();
             case "Late" -> adventurerLevelLateRepository.getAdventurerLevelLateById(rollLevel).getText();
@@ -139,13 +139,13 @@ public class PersonRepo {
 
     private static String getDisposition() {
         return dispositionsRepository
-                .getDispositionsById(DiceRoller.INSTANCE.roll1Based(DiceSize.D100))
+                .getDispositionsById(DiceRoller.roll1Based(DiceSize.D100))
                 .getDispositionText();
     }
 
     private static String getEconomicStatus() {
         return economicStatusRepository
-                .getEconomicStatusById(DiceRoller.INSTANCE.roll1Based(DiceSize.D100))
+                .getEconomicStatusById(DiceRoller.roll1Based(DiceSize.D100))
                 .getText();
     }
 }

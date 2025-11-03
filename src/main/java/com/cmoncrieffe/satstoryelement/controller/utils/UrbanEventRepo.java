@@ -20,7 +20,7 @@ public class UrbanEventRepo {
         return new String[] {
                 ElementType.EVENT.toString(),
                 urbanEventRepository
-                        .getUrbanEventById(DiceRoller.INSTANCE.roll1Based(DiceSize.D100))
+                        .getUrbanEventById(DiceRoller.roll1Based(DiceSize.D100))
                         .getEventText()
         };
     }

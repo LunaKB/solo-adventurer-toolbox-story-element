@@ -19,7 +19,7 @@ public class ElementGeneratorController {
     @GetMapping("/{amount}")
     public ResponseEntity<List<String[]>> generate(@PathVariable("amount") int amount) {
 
-        return ResponseEntity.ok(DiceRoller.INSTANCE.roll0Based(DiceSize.D20, amount)
+        return ResponseEntity.ok(DiceRoller.roll0Based(DiceSize.D20, amount)
                 .stream()
                 .map(integer -> {
                     if (integer <= 6)

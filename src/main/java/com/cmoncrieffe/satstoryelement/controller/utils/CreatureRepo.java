@@ -17,7 +17,7 @@ public class CreatureRepo {
     }
 
     public static String[] get() {
-        int roll = DiceRoller.INSTANCE.roll1Based(DiceSize.D20, 2)
+        int roll = DiceRoller.roll1Based(DiceSize.D20, 2)
                 .stream()
                 .mapToInt(Integer::intValue)
                 .sum();

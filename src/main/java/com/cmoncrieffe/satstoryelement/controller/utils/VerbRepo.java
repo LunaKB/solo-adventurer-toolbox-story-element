@@ -26,7 +26,7 @@ public class VerbRepo {
     }
 
     private static int getValue1() {
-        int value = DiceRoller.INSTANCE.roll1Based(DiceSize.D10);
+        int value = DiceRoller.roll1Based(DiceSize.D10);
         if (value < 3)
             return 0;
         else if (value < 5)
@@ -40,6 +40,6 @@ public class VerbRepo {
     }
 
     private static int getValue2() {
-        return DiceRoller.INSTANCE.roll0Based(DiceSize.D100);
+        return DiceRoller.roll0Based(DiceSize.D100);
     }
 }
