@@ -48,6 +48,7 @@ jobs:
       - name: Build with Gradle
         env:
           KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          SPRING_CLOUD_VAULT_URI: ${{ secrets.SPRING_CLOUD_VAULT_URI }}
         run: ./gradlew clean build --no-daemon
 
       - name: Upload Build Artifact
