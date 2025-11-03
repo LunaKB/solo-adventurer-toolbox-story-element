@@ -47,7 +47,8 @@ jobs:
 
       - name: Build with Gradle
         env:
-          KEYSTORE_PASSWORD: ${{secrets.KEYSTORE_PASSWORD}}
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          SPRING_CLOUD_VAULT_URI: ${{ secrets.SPRING_CLOUD_VAULT_URI }}
         run: ./gradlew clean build --no-daemon
 
       - name: Upload Build Artifact
@@ -66,7 +67,7 @@ jobs:
       - name: Upload Docker Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: sat-story-element-docker.tar
+          name: sat-story-element-docker
           path: |
             dockerfile
-            sat-story-element
+            sat-story-element.tar
