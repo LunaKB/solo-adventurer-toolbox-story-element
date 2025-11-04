@@ -49,6 +49,7 @@ jobs:
         env:
           KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
           SPRING_CLOUD_VAULT_URI: ${{ secrets.SPRING_CLOUD_VAULT_URI }}
+          MYSQL_ADDRESS: ${{ secrets.MYSQL_ADDRESS }}
         run: ./gradlew clean build --no-daemon
 
       - name: Upload Build Artifact
