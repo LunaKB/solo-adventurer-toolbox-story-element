@@ -1,7 +1,8 @@
-# Step 1: Use an official OpenJDK base image from Docker Hub
-FROM openjdk:17-jdk-alpine
+# Step 1: Use an official base image from Docker Hub
+FROM eclipse-temurin:21
 
 # Step 2: Set the working directory inside the container
+RUN mkdir /app
 WORKDIR /app
 
 # Step 3: Copy the Spring Boot JAR file into the container
